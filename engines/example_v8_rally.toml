@@ -1,0 +1,27 @@
+# Example: a rally-raid V8 built from the GM LS.
+# Only the listed fields change; everything else comes from `base`.
+# In the TUI/GUI, `r` / "Reload TOML" reloads this file without restarting.
+base = "gm_ls_v8"
+name = "Example Rally-Raid V8"
+redline_rpm = 7200
+idle_rpm = 1100
+intake_boost = 1.2
+input_cutoff = 2600
+
+[gearbox]
+ratios = [3.2, 2.1, 1.5, 1.15, 0.9]
+final_drive = 4.1
+vehicle_mass = 2100
+
+# Compact firing order; `halves` = cylinders 1-4 on one exhaust, 5-8 on the other.
+[firing]
+order = [1, 8, 4, 3, 6, 5, 7, 2]
+exhaust_map = "halves"
+primary_base = 0.25
+primary_step = 0.02
+primary_cycle = 4
+
+[[eq]]
+kind = "low_shelf"
+freq = 250.0
+gain_db = 2.0
