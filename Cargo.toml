@@ -1,0 +1,23 @@
+[package]
+name = "engine-sim-rs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cpal = "0.18.2"
+eframe = { version = "0.37.0", default-features = false, features = ["default_fonts", "glow", "wayland", "x11"], optional = true }
+hound = "3.5.1"
+ratatui = "0.30.2"
+ringbuf = "0.5.3"
+serde = { version = "1.0.229", features = ["derive"] }
+toml = "1.1.8"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+
+[features]
+default = ["gui"]
+# Interface graphique (egui). `cargo build --no-default-features` ne compile que le TUI.
+gui = ["dep:eframe"]
